@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.log
+*.csv
+*.parquet
+*.pkl
+*.egg-info/
+
