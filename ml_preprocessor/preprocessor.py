@@ -56,3 +56,10 @@ class DataPreprocessor(BaseEstimator, TransformerMixin):
         preprocessor.pipeline = joblib.load(file_path)
         return preprocessor
 
+
+    def save_to_cloud(self, s3_path: str):
+    import boto3
+    buffer = io.BytesIO()
+    joblib.dump(self.pipeline, buffer)
+    s3 = boto3.client('s3')
+    s3.put_object(Bucket=s3_path.bucket, Key=s3_path.key, Body=buffer.getvalue())
