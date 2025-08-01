@@ -35,3 +35,24 @@ class DataPreprocessor(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         return self.pipeline.transform(X)
+
+
+    def save(self, file_path: str = "artifacts/models/preprocessor.joblib"):
+        """
+        Save fitted preprocessor to disk.
+        Path matches ml_project_template's artifacts/ structure.
+        """
+        Path(file_path).parent.mkdir(parents=True, exist_ok=True)
+        joblib.dump(self.pipeline, file_path)
+        return file_path
+
+    @classmethod
+    def load(cls, file_path: str = "artifacts/models/preprocessor.joblib"):
+        """
+        Load saved preprocessor from disk.
+        Returns a new DataPreprocessor instance with loaded pipeline.
+        """
+        preprocessor = cls(num_cols=[], cat_cols=[])  # Columns will be overwritten
+        preprocessor.pipeline = joblib.load(file_path)
+        return preprocessor
+
