@@ -44,8 +44,12 @@ class StandardPreprocessor(BaseEstimator, TransformerMixin):
         Returns:
             self
         """
+
         if not isinstance(X, pd.DataFrame):
             raise TypeError("Input must be a pandas DataFrame")
+
+        if X.empty:
+            raise ValueError("Cannot fit preprocessor on an empty DataFrame.")
 
         numeric_cols = X.select_dtypes(include=[np.number]).columns.tolist()
         categorical_cols = X.select_dtypes(include=["object", "category"]).columns.tolist()
