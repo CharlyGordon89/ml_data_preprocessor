@@ -3,8 +3,6 @@
 `ml_preprocessor` is a modular, reusable Python package that provides standardized preprocessing for structured machine learning data.  
 It is designed to be integrated into any ML pipeline with minimal effort while ensuring consistency, testability, and scalability.
 
-
-"Save processed data to template locations: data/processed/"
 ---
 
 ## ✅ Features
@@ -17,11 +15,9 @@ It is designed to be integrated into any ML pipeline with minimal effort while e
 - 🧱 Clean structure ready for extension (e.g., log transforms, rare label grouping)
 - ☁️ Cloud-compatible: can be plugged into AWS/GCP ML workflows
 
-
 ---
 
 ## 📦 Installation
-
 
 ### Local development (editable mode):
 
